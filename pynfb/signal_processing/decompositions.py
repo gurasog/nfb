@@ -47,6 +47,7 @@ class SpatialDecomposition:
 
     def set_parameters(self, **parameters):
         self.band = (parameters['bandpass_low'], parameters['bandpass_high'])
+        self.temporal_filter = ButterFilter(self.band, self.fs, len(self.channel_names))
 
     def get_filter(self, index=None):
         """
