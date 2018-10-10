@@ -66,7 +66,7 @@ def estimate_component(comp):
     axes[1].set_xlim(0,60)
     bands = [band]#[(k,k+6) for k in range(13, 22, 3)]#[(5,13), (13, 30)]
     main_filter = FilterStack([ButterFilter(b, fs, 1) for b in bands])
-    smoother = ButterFilter((None, 0.6), fs, len(bands))
+    smoother = ButterFilter((None, 0.2), fs, len(bands))
 
     X_comps = X.dot(csp.filters[:, [comp]])
     envs = smoother.apply(np.abs(main_filter.apply(X_comps)))
@@ -91,11 +91,10 @@ def estimate_component(comp):
     return main_filter, smoother, classifier
 
 
-for comp in components:
-    main_filter, smoother, classifier = estimate_component(comp)
+#for comp in components: main_filter, smoother, classifier = estimate_component(comp)
+x=-1
 
-
-x = int(input('Select component:\n'))
+#x = int(input('Select component:\n'))
 components = [x]
 main_filter, smoother, classifier = estimate_component(x)
 
@@ -113,7 +112,7 @@ class TwoSatesClassifier(LSLTransformer):
         X = preprocess.apply(X)
         X_comps = X.dot(csp.filters[:, components])
         envs = smoother.apply(np.abs(main_filter.apply(X_comps)))
-        p = classifier.predict_proba(envs)[:, [0]]
+        p = classifier.predict_proba(envs)[:, [1]]
         return p
 
 
