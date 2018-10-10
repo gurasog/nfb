@@ -22,7 +22,7 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
             with open("../../bci_current_state.pkl", "r") as fp:
                 state = float(fp.read())
             # Send message back to client
-            state = 1 if state < 0.45 else (2 if state < 0.55 else 3)
+            state = 1 if state < 0.4 else (2 if state < 0.6 else 3)
             message = { "state": "{}".format(int(state)), "result": "true"}
 
             # Write content as utf-8 data

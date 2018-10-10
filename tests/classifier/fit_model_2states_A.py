@@ -18,12 +18,13 @@ from utils.lsl_transformer import LSLTransformer
 from scipy.signal import welch
 
 
+dataset_dir = 'ntln-18bci2-test-wednesd_10-10_07-14-06'
+channels_to_exclude = []
 
-h5_dataset = r'C:\Projects\nfblab\nfb\pynfb\results\ar-ntln_10-08_16-34-45\experiment_data.h5'
+h5_dataset = r'C:\Projects\nfblab\nfb\pynfb\results\{}\experiment_data.h5'.format(dataset_dir)
 df, fs, channels, p_names = load_data(h5_dataset)
 print(channels)
-#channels = [ch for ch in channels if ch not in ['O1', 'O2', 'Oz', 'P8', 'P7']]
-#indxs = [j for j, ch in enumerate(channels) if ch not in ['A1', 'A2', 'P4', 'CP4', 'FZ', 'Fc2']]
+channels = [ch for ch in channels if ch not in channels_to_exclude]
 fs = int(fs)
 #channels = channels[:24]
 n_channels = len(channels)
