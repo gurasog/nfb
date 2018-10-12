@@ -19,8 +19,7 @@ from scipy.signal import welch
 import seaborn as sns
 
 results_dir = r'C:\Projects\nfblab\nfb\pynfb\results'
-
-dataset_dir = 'ntln-18bci2-test-wednesd_10-10_07-14-06'
+dataset_dir = 'neurotlon18-rlr-fis-rot_10-06_07-03-16'
 channels_to_exclude = []
 
 h5_dataset = r'{}\{}\experiment_data.h5'.format(results_dir, dataset_dir)
@@ -48,7 +47,7 @@ print(y)
 plt.plot(y)
 plt.show()
 
-band = (16, 23)
+band = (15, 20)
 #band = (8, 15)
 csp = CSPDecomposition(channels, fs, band, reg_coef=0.0001)
 #csp = ICADecomposition(channels, fs, band)
@@ -100,7 +99,7 @@ def estimate_component(comp):
 
 
 #for comp in components: main_filter, smoother, classifier = estimate_component(comp)
-x=-1
+x=0
 
 #x = int(input('Select component:\n'))
 components = [x]
