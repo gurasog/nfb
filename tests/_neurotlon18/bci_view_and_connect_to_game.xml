@@ -4,7 +4,7 @@
 	<sPrefilterBand>None None</sPrefilterBand>
 	<sExperimentName>experiment</sExperimentName>
 	<sInletType>lsl</sInletType>
-	<sStreamName>NVX136_Data</sStreamName>
+	<sStreamName>BCIState</sStreamName>
 	<sEventsStreamName></sEventsStreamName>
 	<sRawDataFilePath></sRawDataFilePath>
 	<sFTHostnamePort>localhost:1972</sFTHostnamePort>
@@ -16,28 +16,12 @@
 	<sReference></sReference>
 	<sReferenceSub></sReferenceSub>
 	<bUseExpyriment>0</bUseExpyriment>
+	<bShowPhotoRectangle>0</bShowPhotoRectangle>
+	<sVizNotchFilters>0</sVizNotchFilters>
 	<vSignals>
 		<DerivedSignal>
 			<sSignalName>Signal</sSignalName>
-			<SpatialFilterMatrix></SpatialFilterMatrix>
-			<bDisableSpectrumEvaluation>0</bDisableSpectrumEvaluation>
-			<fSmoothingFactor>0.99</fSmoothingFactor>
-			<fFFTWindowSize>500</fFFTWindowSize>
-			<fBandpassLowHz>8</fBandpassLowHz>
-			<fBandpassHighHz>12</fBandpassHighHz>
-			<fAverage></fAverage>
-			<fStdDev></fStdDev>
-			<bBCIMode>0</bBCIMode>
-			<sROILabel></sROILabel>
-			<sTemporalType>envdetector</sTemporalType>
-			<sTemporalFilterType>butter</sTemporalFilterType>
-			<fTemporalFilterButterOrder>2</fTemporalFilterButterOrder>
-			<sTemporalSmootherType>exp</sTemporalSmootherType>
-			<iDelayMs>0</iDelayMs>
-		</DerivedSignal>
-		<DerivedSignal>
-			<sSignalName>Signal2</sSignalName>
-			<SpatialFilterMatrix></SpatialFilterMatrix>
+			<SpatialFilterMatrix>BCI=1</SpatialFilterMatrix>
 			<bDisableSpectrumEvaluation>0</bDisableSpectrumEvaluation>
 			<fSmoothingFactor>0.3</fSmoothingFactor>
 			<fFFTWindowSize>500</fFFTWindowSize>
@@ -47,7 +31,7 @@
 			<fStdDev></fStdDev>
 			<bBCIMode>0</bBCIMode>
 			<sROILabel></sROILabel>
-			<sTemporalType>envdetector</sTemporalType>
+			<sTemporalType>identity</sTemporalType>
 			<sTemporalFilterType>fft</sTemporalFilterType>
 			<fTemporalFilterButterOrder>2</fTemporalFilterButterOrder>
 			<sTemporalSmootherType>exp</sTemporalSmootherType>
@@ -55,7 +39,11 @@
 		</DerivedSignal>
 		<CompositeSignal>
 			<sSignalName>Composite</sSignalName>
-			<sExpression></sExpression>
+			<sExpression>1</sExpression>
+		</CompositeSignal>
+		<CompositeSignal>
+			<sSignalName>Composite1</sSignalName>
+			<sExpression>0</sExpression>
 		</CompositeSignal>
 	</vSignals>
 	<vProtocols>
@@ -103,7 +91,6 @@
 		</PGroup>
 	</vPGroups>
 	<vPSequence>
-		<s>Protocol</s>
 		<s>Protocol</s>
 	</vPSequence>
 </NeurofeedbackSignalSpecs>
