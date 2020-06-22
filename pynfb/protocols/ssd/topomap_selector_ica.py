@@ -68,6 +68,8 @@ class ICADialog(QtWidgets.QDialog):
         self.topographies = self.decomposition.topographies
         self.components = np.dot(self.raw_data, self.unmixing_matrix)
 
+        ###gurasog здесь создаются компоненты
+
 
         print('ICA/CSP time elapsed = {}s'.format(time() - timer))
         timer = time()

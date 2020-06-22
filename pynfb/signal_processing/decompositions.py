@@ -69,6 +69,32 @@ class SpatialDecomposition:
                                           topographies=self.topographies[:, indexes])
 
 
+#class InverseROIDecomposition(SpatialDecomposition):
+#    def __init__(self, channel_names, fs, band=None):
+#
+#        super(ICADecomposition, self).__init__(channel_names, fs, band)
+#        self.sorted_channel_index = 0
+#        self.name = 'roi'
+#
+#   def decompose(self, X, y=None):#
+
+#        raw_inst = RawArray(X.T, create_info(self.channel_names, self.fs, 'eeg', None))
+#
+#        ica = ICA(method='extended-infomax')
+#
+#        ica.fit(raw_inst)
+#
+#        filters = np.dot(ica.unmixing_matrix_, ica.pca_components_[:ica.n_components_]).T
+#
+#        topographies = np.linalg.inv(filters).T
+#        scores = self.get_scores(X, filters)
+#        return scores, filters, topographies
+
+
+#    def get_scores(self, X, filters, ch_name=None, index=None):
+
+
+
 class CSPDecomposition(SpatialDecomposition):
     def __init__(self, channel_names, fs, band=None, reg_coef=0.001):
         super(CSPDecomposition, self).__init__(channel_names, fs, band)
@@ -164,6 +190,8 @@ class SpatialDecompositionPool:
         return FilterStack(filters)
 
 
+
+
 class ArtifactRejector:
     def __init__(self, channel_names, fs):
         self.ica = ICADecomposition(channel_names, fs)
@@ -223,3 +251,4 @@ if __name__ == '__main__':
     ax[1].plot(sensors + np.array([1, 0, -1]))
     ax[2].plot(csp_filter.apply(sensors) + np.array([1, 0, -1]))
     plt.show()
+
